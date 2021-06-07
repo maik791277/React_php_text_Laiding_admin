@@ -1,25 +1,9 @@
-import $ from 'jquery';
-
-function getPageList() {
-    $("h1").remove();
-    $.get("./api", data => {
-        data.forEach(file =>{
-            $("body").append(`<h1>${file}</h1>`)
-        })
-    },"JSON");
-}
+import React from "react";
+import ReactDom from 'react-dom';
+import Editor from "./components/editor";
 
 
-getPageList();
+ReactDom.render(<Editor/> , document.getElementById('root'));
 
 
-$("button").click(() =>{
-    $.post("./api/createNewPage.php",{
-        "name" : $("input").val()
-    }, () => {
-        getPageList();
-    })
-        .fail(() =>{
-            alert("страница уже сушествует!");
-        })
-});
+
